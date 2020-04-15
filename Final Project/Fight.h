@@ -2,10 +2,7 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <time.h>
-#include <stdio.h> 
-#include <stdlib.h> 
-#include <ctime>
+#include "RNG.h"
 
 
 using namespace std;
@@ -15,19 +12,12 @@ int Attack();
 //---------------------
 
 
-int RNG(/*Add the high number*/ int High, /*Add the low number*/ int low)
-{
-	srand(static_cast<unsigned int>(time(0))); /*generates a random number*/
 
-	int NumberGenerated = rand() % High + low; // seed number between low and high
-
-	return NumberGenerated;
-}
 
 int Attack()
 {
 
-	int NumberGenerated = RNG(3, 1);
+ 	int NumberGenerated = RNG(3, 1);
 
 	if (NumberGenerated == 1)
 	{
@@ -39,10 +29,14 @@ int Attack()
 		return 2;
 		//cout << "\nThe beast spits acid on you and you die a slow painful death.";
 	}
-	else
+	else if (NumberGenerated == 3)
 	{
 		return 3;
 		//cout << "\nAn asteroid strikes the ground and kills everything on the planet";
+	}
+	else
+	{
+		return 3;
 	}
 
 	return 0;
